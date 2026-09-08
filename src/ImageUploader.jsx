@@ -16,7 +16,7 @@ function ImageUploader({ image, onImageChange, onConfirm, analysed, onDelete}) {
                         )
                         : (
                             <img
-                                src="timg/no-image.png"
+                                src="/timg/no-image.png"
                                 alt="No garment selected"
                             />
                         )
