@@ -1,27 +1,17 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 
-function GarmentAnalyser() {
-    const [atts, setAtts] = useState({ Type: "dress", Cut: "A-Line", Sleeve: "Long ", Length: "maxi", Collar: "round", Accuracy: 92 })
-    useEffect(
-        () => {
-            async function getAiResults() {
-                try {
-                    const response = await fetch("");
-                    if (!response.ok) {
-                        throw new Error("Failed to fetch AI results");
-                    }
-                    const data = await response.json();
+function GarmentAnalyser({ attrs }) {
+    const {
+        type = "",
+        color ="",
+        cut = "",
+        sleeve = "",
+        length = "",
+        collar = "",
+        confidence = 0,
+    } = attrs ?? {};
 
-                    setAtts(data);
-                } catch (error) {
-                    console.log(error);
-                }
-            }
-            getAiResults();
-
-        }, []
-    )
     return (
         <div className="box2">
             <div className="logoBar">
@@ -30,12 +20,13 @@ function GarmentAnalyser() {
             </div>
 
             <div className="analysisBox">
-                <div className="attribute"><img src="/timg/ladies-cloth.png" alt="" className="attIcon" /><p className="p2">Type: </p><h2>{atts.Type}</h2></div>
-                <div className="attribute"><img src="/timg/scissors.png" alt="" className="attIcon" /><p className="p2">Cut: </p><h2>{atts.Cut}</h2></div>
-                <div className="attribute"><img src="/timg/button.png" alt="" className="attIcon" /><p className="p2">Sleeve: </p><h2>{atts.Sleeve}</h2></div>
-                <div className="attribute"><img src="/timg/length.png" alt="" className="attIcon" /><p className="p2">Length: </p><h2>{atts.Length}</h2></div>
-                <div className="attribute"><img src="/timg/people.png" alt="" className="attIcon" /><p className="p2">Collar: </p><h2>{atts.Collar}</h2></div>
-                <div className="attribute"><img src="/timg/veracity.png" alt="" className="attIcon" /><p className="p2">Accuracy: </p><h2>{atts.Accuracy}</h2></div>
+                <div className="attribute"><img src="/timg/ladies-cloth.png" alt="" className="attIcon" /><p className="p2">Type: </p><h2>{type}</h2></div>
+                <div className="attribute"><img src="/timg/wheel.png" alt="" className="attIcon" /><p className="p2">Color: </p><h2>{color}</h2></div>
+                <div className="attribute"><img src="/timg/scissors.png" alt="" className="attIcon" /><p className="p2">Cut: </p><h2>{cut}</h2></div>
+                <div className="attribute"><img src="/timg/button.png" alt="" className="attIcon" /><p className="p2">Sleeve: </p><h2>{sleeve}</h2></div>
+                <div className="attribute"><img src="/timg/length.png" alt="" className="attIcon" /><p className="p2">Length: </p><h2>{length}</h2></div>
+                <div className="attribute"><img src="/timg/people.png" alt="" className="attIcon" /><p className="p2">Collar: </p><h2>{collar}</h2></div>
+                <div className="attribute"><img src="/timg/veracity.png" alt="" className="attIcon" /><p className="p2">confidence: </p><h2>{confidence}</h2></div>
             </div>
         </div>
     );
